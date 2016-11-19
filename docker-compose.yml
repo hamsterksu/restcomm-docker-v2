@@ -1,0 +1,29 @@
+version: '2'
+services:
+  baseimage:
+    build: restcomm-baseimage-java7
+    image: restcomm/baseimage:java7
+    command: /bin/true
+  restcomm-base:
+    build: restcomm-base-as7
+    image: restcomm/base:as7
+    command: /bin/true
+    depends_on:
+      - baseimage
+  mediaserver:
+    image: restcomm/mediaserver-docker
+  restcomm:
+    build: restcomm-restcomm-as7
+    image: restcomm/restcomm:as7
+    depends_on:
+      - restcomm-base
+  olympus:
+    build: restcomm-olympus-as7
+    image: restcomm/olympus:as7
+    depends_on:
+      - restcomm-base
+  rvd:
+    build: restcomm-rvd-as7
+    image: restcomm/rvd:as7
+    depends_on:
+      - restcomm-base
