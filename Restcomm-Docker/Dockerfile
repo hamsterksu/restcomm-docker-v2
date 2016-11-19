@@ -5,7 +5,7 @@ MAINTAINER Jean Deruelle - jean.deruelle@telestax.com
 MAINTAINER Lefteris Banos - liblefty@telestax.com
 
 # download restcomm
-ENV install_dir /opt/Restcomm-JBosss-AS7
+ENV install_dir /opt/Restcomm-JBoss-AS7
 RUN wget -qO- https://mobicents.ci.cloudbees.com/view/RestComm/job/RestComm/lastSuccessfulBuild/artifact/restcomm-version.txt -O version.txt && mv version.txt /tmp/version
 RUN wget -qc https://mobicents.ci.cloudbees.com/view/RestComm/job/RestComm/lastSuccessfulBuild/artifact/Restcomm-JBoss-AS7-`cat /tmp/version`.zip -O Restcomm-JBoss-AS7.zip && \
 unzip Restcomm-JBoss-AS7.zip -d /opt/ && mv /opt/Restcomm-JBoss-AS7-*/ ${install_dir} && \
